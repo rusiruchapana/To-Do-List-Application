@@ -1,0 +1,7 @@
+2. To-Do List Application
+Description: Create a task management application where users can add, complete, and delete tasks.
+Key Learning Areas:
+CRUD operations with Django views.
+User authentication for personal task management.
+Using Django’s built-in User model or creating a custom user model.
+Implementing filtering and sorting features.
