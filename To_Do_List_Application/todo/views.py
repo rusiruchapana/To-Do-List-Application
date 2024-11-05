@@ -35,8 +35,18 @@ def task_detail(request , pk):
     return Response(serializer.data)
 
 
-
-
+@api_view(['PUT'])
+def task_update(request , pk):
+    try:
+        task = Task.objects.get(id = pk)
+    except Task.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    
+    serializer = TaskSerializer(task , data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+    return Response( serializer.errors , status=status.HTTP_400_BAD_REQUEST)
 
 
 
