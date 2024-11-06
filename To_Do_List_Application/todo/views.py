@@ -49,6 +49,16 @@ def task_update(request , pk):
     return Response( serializer.errors , status=status.HTTP_400_BAD_REQUEST)
 
 
+@api_view(['DELETE'])
+def task_delete(request , pk):
+    try:
+        task = Task.objects.get(id = pk)
+    except Task.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    
+    task.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)
+
 
 
 
